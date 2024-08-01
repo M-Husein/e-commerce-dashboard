@@ -1,11 +1,8 @@
-// import { useState } from "react";
-import { HttpError, useTranslate, useActiveAuthProvider, useRegister } from "@refinedev/core"; // , RegisterFormTypes
-import { Input, Button } from "antd"; // , Radio
+import { HttpError, useTranslate, useActiveAuthProvider, useRegister } from "@refinedev/core";
+import { Input, Button } from "antd";
 import { Link } from "react-router-dom";
 import { useForm } from "@refinedev/react-hook-form";
-import { Controller } from 'react-hook-form'; // useForm, 
-// import { MailOutlined, LockOutlined, PhoneOutlined } from '@ant-design/icons';
-// import { FaRegUser } from "react-icons/fa";
+import { Controller } from 'react-hook-form';
 import { Layout } from '@/components/layout/auth/Layout';
 import { Form } from '@/components/forms/Form';
 import { email as emailRegExp } from '@/utils/regExp';
@@ -13,16 +10,16 @@ import { email as emailRegExp } from '@/utils/regExp';
 type IFormValues = {
   name: string;
   email?: string;
-  // username: string;
+  username?: string;
   password: string;
   c_password: string;
-  providerName?: string; // providerName | provider
+  providerName?: string;
 }
 
 export default function Page(){
   const translate = useTranslate();
   const authProvider = useActiveAuthProvider();
-  const { mutate: register, isLoading } = useRegister<any>({ // <RegisterFormTypes>
+  const { mutate: register, isLoading } = useRegister<any>({
     v3LegacyAuthProviderCompatible: !!authProvider?.isLegacy 
   });
 
@@ -81,7 +78,7 @@ export default function Page(){
             />
             {errors.name && (
               <div className="mt-1 text-red-700 text-xs">
-                {errors.name.message || translate("error.required", { name: "Name" })}
+                {errors.name.message || translate("error.required")}
               </div>
             )}
           </div>
@@ -114,7 +111,7 @@ export default function Page(){
             />
             {errors.email && (
               <div className="mt-1 text-red-700 text-xs">
-                {errors.email.message || translate("error.required", { name: "Email" })}
+                {errors.email.message || translate("error.required")}
               </div>
             )}
           </div>
@@ -148,7 +145,7 @@ export default function Page(){
             />
             {errors.password && (
               <div className="mt-1 text-red-700 text-xs">
-                {errors.password.message || translate("error.required", { name: "Password" })}
+                {errors.password.message || translate("error.required")}
               </div>
             )}
           </div>
@@ -179,7 +176,7 @@ export default function Page(){
             />
             {errors.c_password && (
               <div className="mt-1 text-red-700 text-xs">
-                {errors.c_password.message || translate("error.required", { name: "Confirm password" })}
+                {errors.c_password.message || translate("error.required")}
               </div>
             )}
           </div>

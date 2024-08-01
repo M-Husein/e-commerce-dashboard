@@ -11,7 +11,7 @@ export function Layout({
   useDocumentTitle(title + " • " + APP_NAME);
 
   return (
-    <div className="flex min-h-fullscreen p-4 bg-gray-200">
+    <div className="flex min-h-fullscreen p-4 bg-theme">
       <Col lg={7} xs={24} className="m-auto">
         <p className="text-center">
           <Link 

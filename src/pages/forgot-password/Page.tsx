@@ -1,7 +1,7 @@
 import { HttpError, useTranslate, useForgotPassword } from "@refinedev/core";
 import { Input, Button } from "antd";
 import { useForm } from "@refinedev/react-hook-form";
-import { Controller } from 'react-hook-form'; // useForm, 
+import { Controller } from 'react-hook-form';
 import { Link } from "react-router-dom";
 import { Layout } from '@/components/layout/auth/Layout';
 import { Form } from '@/components/forms/Form';
@@ -24,10 +24,6 @@ export default function Page(){
   } = useForm<IFormValues, HttpError, IFormValues>();
 
   const doSubmit = (values: any) => {
-    // forgotPassword({
-    //   username: values.username.trim()
-    // });
-
     forgotPassword(values)
   }
 
@@ -74,7 +70,7 @@ export default function Page(){
             />
             {errors.email && (
               <div className="mt-1 text-red-700 text-xs">
-                {errors.email.message || translate("error.required", { name: "Email" })}
+                {errors.email.message || translate("error.required")}
               </div>
             )}
           </div>

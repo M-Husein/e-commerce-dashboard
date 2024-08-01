@@ -2,8 +2,7 @@ import { HttpError, useTranslate, useActiveAuthProvider, useLogin } from "@refin
 import { Input, Button, Checkbox } from "antd";
 import { Link } from "react-router-dom";
 import { useForm } from "@refinedev/react-hook-form";
-import { Controller } from 'react-hook-form'; // useForm, 
-// import { MailOutlined, LockOutlined } from '@ant-design/icons';
+import { Controller } from 'react-hook-form';
 import { Layout } from '@/components/layout/auth/Layout';
 import { Form } from '@/components/forms/Form';
 
@@ -19,7 +18,6 @@ type IFormValues = {
  * @see {@link https://refine.dev/docs/ui-frameworks/antd/components/antd-auth-page/#login} for more details.
  */
 export default function Page(){
-  // const { token } = theme.useToken();
   const translate = useTranslate();
   const authProvider = useActiveAuthProvider();
   const { mutate: login, isLoading } = useLogin<any>({ 
@@ -77,7 +75,7 @@ export default function Page(){
             />
             {errors.username && (
               <div className="mt-1 text-red-700 text-xs">
-                {translate("error.required", { name: "Username" })}
+                {translate("error.required")}
               </div>
             )}
           </div>
@@ -111,7 +109,7 @@ export default function Page(){
             />
             {errors.password && (
               <div className="mt-1 text-red-700 text-xs">
-                {errors.password.message || translate("error.required", { name: "Password" })}
+                {errors.password.message || translate("error.required")}
               </div>
             )}
           </div>
