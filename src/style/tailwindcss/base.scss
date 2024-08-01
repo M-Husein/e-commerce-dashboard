@@ -1,0 +1,46 @@
+@tailwind base;
+
+@layer base {
+  // html, body {
+  //   height: auto;
+  // }
+
+  // body, #root {
+  //   min-height: 100vh;
+  //   // min-height: 100dvh;
+  // }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  label {
+    display: inline-block;
+  }
+
+  // :not(.disabled)
+  // a[href]:hover {
+  //   color: #ff9a3e; // #ff7a00
+  // }
+
+  // Lato from Google Font
+  // .lato-light {
+  //   font-family: "Lato", sans-serif;
+  //   font-weight: 300;
+  //   font-style: normal;
+  // }
+  
+  // .lato-regular {
+  //   font-family: "Lato", sans-serif;
+  //   font-weight: 400;
+  //   font-style: normal;
+  // }
+  
+  // .lato-bold {
+  //   font-family: "Lato", sans-serif;
+  //   font-weight: 700;
+  //   font-style: normal;
+  // }
+}
+
+// Always compile Here

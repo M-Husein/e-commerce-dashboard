@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ced4da" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no, address=no, email=no" />
+    <meta name="application-name" content="%VITE_APP_NAME%" />
+    <meta name="description" content="%VITE_APP_DESCRIPTION%" />
+    <meta property="og:title" content="%VITE_APP_NAME%"/>
+    <meta property="og:description" content="%VITE_APP_DESCRIPTION%" />
+    <meta name="twitter:title" content="%VITE_APP_NAME%"/>
+    <meta name="twitter:description" content="%VITE_APP_DESCRIPTION%" />
+    <title>%VITE_APP_NAME%</title>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <!-- <link rel="icon" href="/logo.svg" type="image/svg+xml" /> -->
+    <link rel="apple-touch-icon" href="/logo-144x144" />
+    <style>
+      :root{
+        --q-bg-main:#fff;
+        --q-bg-nav:#ced4da;
+      }
+      #loaderApp,.nojs{
+        position:fixed;
+        background-color:var(--q-bg-main)
+      }
+      .load-spin,.nojs{
+        display:grid;
+        place-content:center;
+        text-align:center
+      }
+      .load-spin{
+        user-select:none;
+        z-index:1055;
+        cursor:wait
+      }
+      .inset-0{
+        inset:0
+      }
+      @-webkit-keyframes spin{
+        to{
+          -webkit-transform:rotate(360deg);
+          transform:rotate(360deg)
+        }
+      }
+      @keyframes spin{
+        to{
+          -webkit-transform:rotate(360deg);
+          transform:rotate(360deg)
+        }
+      }
+      .spinner-border{
+        color:#0d6efd;
+        display:inline-block;
+        width:2rem;
+        height:2rem;
+        vertical-align:-0.125em;
+        border:.25em solid currentcolor;
+        border-right-color:transparent;
+        border-radius:50%;
+        -webkit-animation:.75s linear infinite spin;
+        animation:.75s linear infinite spin
+      }
+      .spinner-border-sm{
+        width:1rem;
+        height:1rem;
+        border-width:.2em
+      }
+      @media(prefers-reduced-motion:reduce){
+        .spinner-border{
+          -webkit-animation-duration:1.5s;
+          animation-duration:1.5s
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="loaderApp" class="load-spin inset-0">
+      <img aria-hidden="true" src="/logo-32x32.png" alt="%VITE_APP_NAME%" class="inset-0" style="position:fixed;margin:auto;font-size:0" />
+      <b class="spinner-border" style="width:64px;height:64px" role="status"></b>
+    </div>
+    <noscript>
+      <style>
+      #loaderApp{
+        display:none
+      }
+      .nojs{
+        font-family:Arial
+      }
+      </style>
+      <div data-nosnippet="true" aria-hidden="true" class="inset-0 nojs">
+        <p data-nosnippet="true">You need to enable JavaScript to run this app.</p>
+        <a data-nosnippet="true" rel="noopener noreferrer nofollow" target="_blank" href="https://www.enablejavascript.io">GUIDE</a>
+      </div>
+    </noscript>
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>

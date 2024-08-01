@@ -1,0 +1,60 @@
+// Dashboard layout
+.a-layout > .a-row {
+  height: auto !important;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.drawerMain .a-drawer-content {
+  overflow: unset;
+}
+
+.sider-menu [role=menuitem] {
+  user-select: none;
+}
+
+.sider-search {
+  padding-inline: 0 !important;
+  margin-inline: 0 !important;
+  // margin-block: 0 !important;
+
+  // position: sticky !important;
+  // border-radius: 0 !important;
+  // height: auto !important;
+  // width: auto !important;
+  // cursor: auto !important;
+
+  // background-color: #fff !important;
+}
+
+// .dark .sider-search {
+//   background-color: #1f1f1f !important;
+// }
+
+.a-layout-sider-collapsed .sider-search input,
+.a-layout-sider-collapsed .sider-search .a-input-affix-wrapper {
+  display: none;
+}
+.a-layout-sider-collapsed .sider-search button {
+  width: 100%;
+  border-radius: 6px !important;
+}
+.a-layout-sider-collapsed .sider-menu [role=menuitem]:not(.sider-search) .a-menu-title-content {
+  font-size: 0;
+  margin-inline-start: 0;
+}
+
+.a-layout-sider-collapsed .sider-menu [role=menuitem]:not(.sider-search) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sider-search button .ai {
+  display: inline-flex;
+}
+
+.siderMain .a-layout-sider-children {
+  display: flex;
+  flex-direction: column;
+}
