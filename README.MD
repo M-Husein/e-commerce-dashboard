@@ -22,8 +22,8 @@ Rest API from [dummyjson.com](https://dummyjson.com).
 - Adding a new data will not add it into the server. It will simulate a POST request and will return the new created data with a new id
 - Deleting a data will not delete it into the server. It will simulate a DELETE request and will return deleted data.
 - Updating a data will not update it into the server.It will simulate a PUT/PATCH request and will return updated data.
-
-<br/>
+- Sort data only for 1 field.
+- Limited and incomplete data for advanced features.
 
 ## Getting Started
 

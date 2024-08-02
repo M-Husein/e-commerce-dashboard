@@ -1,4 +1,3 @@
-// import React from "react";
 import { OpenNotificationParams } from "@refinedev/core";
 import { Button, Progress } from "antd";
 import { UndoOutlined } from "@ant-design/icons";

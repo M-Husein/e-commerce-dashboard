@@ -1,8 +1,6 @@
-import { ReactNode, ErrorInfo, Component } from 'react'; // , Suspense, lazy
-// import { Link } from "react-router-dom";
+import { ReactNode, ErrorInfo, Component } from 'react';
 import { Result, Button } from 'antd';
-import { useNavigation } from "@refinedev/core"; // useGetIdentity
-// import { useLocation } from 'react-router-dom'; 
+import { useNavigation } from "@refinedev/core";
 
 interface ErrorBoundaryProps {
   children?: ReactNode;
@@ -18,7 +16,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(){ // error: Error
+  static getDerivedStateFromError(){
     return { hasError: true };
   }
 
@@ -43,10 +41,9 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 }
 
 const ButtonBackTo = (props: any) => {
-  // const { data: user } = useGetIdentity<any>();
   const { push } = useNavigation();
 
-  const backTo = () => { // e: any
+  const backTo = () => {
     let path = "/";
     
     if(window.location.pathname.startsWith('/admin')){

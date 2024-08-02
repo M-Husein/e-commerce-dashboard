@@ -1,8 +1,7 @@
 import { RefineErrorPageProps } from "@refinedev/ui-types";
 import { useEffect } from "react";
-import { useNavigation } from "@refinedev/core"; // useGo, useRouterType, useGetIdentity, useResource
-import { Button, Result } from "antd"; // , Typography, Space, Tooltip
-// import { InfoCircleOutlined } from "@ant-design/icons";
+import { useNavigation } from "@refinedev/core";
+import { Button, Result } from "antd";
 
 /**
  * When the app is navigated to a non-existent route, refine shows a default error page.
@@ -11,38 +10,12 @@ import { Button, Result } from "antd"; // , Typography, Space, Tooltip
  * @see {@link https://refine.dev/docs/packages/documentation/routers/} for more details.
  */
 export const ErrorComponent: React.FC<RefineErrorPageProps> = () => {
-  // const [errorMessage, setErrorMessage] = useState<string>();
-  // const translate = useTranslate();
-  // const { data: user } = useGetIdentity<any>();
-  // const go = useGo();
-  // const routerType = useRouterType();
   const { push } = useNavigation();
-
-  // const { resource, action } = useResource();
 
   useEffect(() => {
     const loader = document.getElementById('loaderApp');
-    
-    // loader?.classList.add('hidden');
     if(loader) loader.hidden = true;
   }, []);
-
-  // useEffect(() => {
-  //   if (resource) {
-  //     if (action) {
-  //       setErrorMessage(
-  //         translate(
-  //           "pages.error.info",
-  //           {
-  //             action: action,
-  //             resource: resource?.name,
-  //           },
-  //           `You may have forgotten to add the "${action}" component to "${resource?.name}" resource.`,
-  //         ),
-  //       );
-  //     }
-  //   }
-  // }, [resource, action]);
 
   const backTo = () => {
     let path = "/";
@@ -54,8 +27,6 @@ export const ErrorComponent: React.FC<RefineErrorPageProps> = () => {
     // if(user?.name === 'system'){
     //   path += "admin";
     // }
-    
-    // routerType === "legacy" ? push(path) : go({ to: path })
 
     push(path);
   }

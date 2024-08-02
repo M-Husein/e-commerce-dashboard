@@ -32,7 +32,6 @@ export default function Create(){
               size={150}
               icon={<FaImage />}
               shape="square"
-              // src={avatar || image}
             />
           }
         />

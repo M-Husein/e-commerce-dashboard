@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { TableColumnsType } from 'antd';
 import { useDocumentTitle } from "@refinedev/react-router-v6";
 import { HttpError, useParsed, useTranslate, useDelete, useNavigation, useGetIdentity } from "@refinedev/core";
-import { useTable, getDefaultSortOrder } from "@refinedev/antd";
+import { useTable } from "@refinedev/antd";
 import { Button, Modal } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { FaRegUser } from "react-icons/fa";
@@ -28,9 +28,7 @@ export default function Page(){
 
   const {
     tableProps,
-    sorter,
-    tableQueryResult: { 
-      // data: tableData, 
+    tableQueryResult: {
       isLoading, 
       isFetching, 
       isRefetching, 
@@ -108,9 +106,6 @@ export default function Page(){
       key: 'total',
       width: 55,
       render: renderNumberCol,
-      // sorter: (a: any, b: any) => a.title - b.title,
-      // sortOrder: getDefaultSortOrder('title', sorter),
-      // ...getColumnSearchProps('title'),
     },
     {  
       title: 'Total Products',

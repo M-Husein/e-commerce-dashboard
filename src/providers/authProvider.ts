@@ -18,7 +18,6 @@ export const authProvider: AuthProvider = {
       // await api.get('csrf-cookie');
 
       const req: any = await httpRequest.post('auth/register', { json }).json();
-      console.log('req: ', req);
 
       if(req?.data){
         const token = req.data.token;
@@ -88,8 +87,6 @@ export const authProvider: AuthProvider = {
           },
         }).json();
 
-        // console.log('req: ', req);
-
         if(req?.token){
           const cookieOptions: any = {
             sameSite: "lax", // lax | strict
@@ -101,7 +98,6 @@ export const authProvider: AuthProvider = {
             req.token + TOKEN_KEY_UID,
             {
               ...cookieOptions,
-              // expires: new Date(new Date().getTime() + 3 * 60 * 1000)
               expires,
             }
           );
@@ -220,7 +216,7 @@ export const authProvider: AuthProvider = {
 
     try { // send password reset link to the user's email address here
       const req: any = await httpRequest('auth/forgot-password/' + username);
-      // console.log('req: ', req);
+      
       if(req?.success){
         return {
           success: true,
@@ -235,16 +231,9 @@ export const authProvider: AuthProvider = {
   },
 
   onError: async (error) => {
-    // console.log('%cauthProvider onError error: ', 'color:yellow', error);
-
-    // Request abort / cancel
-    // if (error.name === 'AbortError' || error.message === 'canceled') {
-    //   return  {};
-    // }
-
     const statusCode = error?.response?.status;
 
-    if (statusCode === 401 || statusCode === 419) { // error?.response?.status === 401
+    if (statusCode === 401 || statusCode === 419) {
       return {
         error,
         authenticated: false,

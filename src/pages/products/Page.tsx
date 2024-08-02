@@ -1,9 +1,9 @@
 import { useState } from "react";
 import type { TableColumnsType } from 'antd';
 import { useDocumentTitle } from "@refinedev/react-router-v6";
-import { HttpError, useParsed, useTranslate, useDelete, useNavigation, useGetIdentity } from "@refinedev/core"; // useNotification
-import { useTable, getDefaultSortOrder } from "@refinedev/antd";
-import { Button, Modal } from 'antd'; // Breadcrumb, 
+import { HttpError, useParsed, useTranslate, useDelete, useNavigation, useGetIdentity } from "@refinedev/core";
+import { useTable } from "@refinedev/antd";
+import { Button, Modal } from 'antd';
 import { Link } from 'react-router-dom';
 import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import { Table } from '@/components/table/Table';
@@ -28,9 +28,7 @@ export default function Page(){
 
   const {
     tableProps,
-    sorter,
-    tableQueryResult: { 
-      // data: tableData, 
+    tableQueryResult: {
       isLoading, 
       isFetching, 
       isRefetching, 
@@ -57,7 +55,6 @@ export default function Page(){
   });
 
   let loadingTable = isLoading || isFetching || isRefetching;
-  // console.log('tableProps: ', tableProps)
 
   const confirmModal = (title: any, callback: (fn: any) => void): void => {
     const modalConfirm = modalApi.confirm({
@@ -133,9 +130,6 @@ export default function Page(){
       dataIndex: 'title',
       key: 'title',
       width: 235,
-      // sorter: (a: any, b: any) => a.title - b.title,
-      // sortOrder: getDefaultSortOrder('title', sorter),
-      // ...getColumnSearchProps('title'),
     },
     {  
       title: 'Brand',

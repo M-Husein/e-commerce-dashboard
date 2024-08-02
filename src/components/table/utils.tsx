@@ -1,8 +1,7 @@
-import { useRef } from 'react'; // , useState
+import { useRef } from 'react';
 import { SearchOutlined, CloseOutlined } from '@ant-design/icons';
-import type { InputRef, TableColumnType } from 'antd'; // , TableColumnsType
-import { Input, Button } from 'antd'; // , Space, 
-// import type { FilterDropdownProps } from 'antd/es/table/interface';
+import type { InputRef, TableColumnType } from 'antd';
+import { Input, Button } from 'antd';
 
 export const getFilterItem = (filters: any, field: string) => {
   return filters?.find((item: any) => item.field === field)?.value?.[0] || "";
@@ -12,14 +11,13 @@ export const setOrders = (sorters: Array<any>) => {
   return sorters?.map((item: any) => ({ columnName: item.field, direction: item.order }) );
 }
 
-type DataIndex = string; //  | number
+type DataIndex = string;
 
 export const getColumnSearchProps = (dataIndex: DataIndex): TableColumnType<any> => {
   const searchInput = useRef<InputRef>(null);
 
   return {
     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => {
-      // console.log('selectedKeys: ', selectedKeys)
       const changeInput = (e: any) => {
         let val = e.target.value;
         setSelectedKeys(val ? [val] : []);
@@ -48,12 +46,10 @@ export const getColumnSearchProps = (dataIndex: DataIndex): TableColumnType<any>
           <Input.Search
             ref={searchInput}
             allowClear
-            // size="small"
             placeholder="Search"
             value={selectedKeys[0]}
             onChange={changeInput}
-            // onPressEnter={() => confirm()} // handleSearch(selectedKeys as string[], confirm, dataIndex)
-            onSearch={doSearch} // () => confirm()
+            onSearch={doSearch}
           />
           
           <Button
@@ -65,8 +61,7 @@ export const getColumnSearchProps = (dataIndex: DataIndex): TableColumnType<any>
         </div>
       )
     },
-    filterIcon: () => ( // filtered: boolean
-      // style={filtered ? { color: '#1677ff', background: '#bae0ff' } : {}}
+    filterIcon: () => (
       <SearchOutlined title="Filter" />
     ),
     onFilter: (value, record) => {

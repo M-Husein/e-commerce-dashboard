@@ -1,7 +1,5 @@
 import { Table as AntTable } from 'antd';
 
-// export const setOrders = (sorters: Array<any>) => sorters?.map((item: any) => ({ columnName: item.field, direction: item.order }) );
-
 export const Table = ({
   pagination,
   ...etc

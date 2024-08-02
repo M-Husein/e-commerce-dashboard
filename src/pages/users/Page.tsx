@@ -2,8 +2,8 @@ import { useState } from "react";
 import type { TableColumnsType } from 'antd';
 import { useDocumentTitle } from "@refinedev/react-router-v6";
 import { HttpError, useParsed, useTranslate, useDelete, useNavigation, useGetIdentity } from "@refinedev/core"; // useNotification
-import { useTable, getDefaultSortOrder } from "@refinedev/antd";
-import { Button, Modal } from 'antd'; // Breadcrumb, 
+import { useTable } from "@refinedev/antd";
+import { Button, Modal } from 'antd';
 import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import { Table } from '@/components/table/Table';
 import { Header } from '@/components/table/Header';
@@ -27,9 +27,7 @@ export default function Page(){
 
   const {
     tableProps,
-    sorter,
-    tableQueryResult: { 
-      // data: tableData, 
+    tableQueryResult: {
       isLoading, 
       isFetching, 
       isRefetching, 
@@ -56,7 +54,6 @@ export default function Page(){
   });
 
   let loadingTable = isLoading || isFetching || isRefetching;
-  // console.log('currentUser: ', currentUser)
 
   const confirmModal = (title: any, callback: (fn: any) => void): void => {
     const modalConfirm = modalApi.confirm({
@@ -105,9 +102,6 @@ export default function Page(){
       dataIndex: 'firstName',
       key: 'firstName',
       width: 175,
-      // sorter: (a: any, b: any) => a.kelas_code - b.kelas_code,
-      // sortOrder: getDefaultSortOrder('kelas_code', sorter),
-      // ...getColumnSearchProps('kelas_code'),
     },
     {  
       title: 'Last Name',

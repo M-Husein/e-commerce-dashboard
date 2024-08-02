@@ -49,7 +49,7 @@ export const LanguageMenu = ({
       overlayStyle={overlayStyle}
     >
       <Button
-        className="flex items-center px-1" //  !p-0
+        className="flex items-center px-1"
         title={translate("language")}
       >
         <Avatar

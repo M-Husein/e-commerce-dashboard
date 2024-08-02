@@ -28,7 +28,6 @@ export const dataProvider = (
         mode = "server",
       } = pagination ?? {};
   
-      // payload, params
       const { method, queryContext, searchParams, headers, keyData, ...requestOptions } = meta ?? {};
       const requestMethod = (method as MethodCommons) ?? "get";
   
@@ -111,7 +110,7 @@ export const dataProvider = (
   
       try {
         const response: any = await httpClient(
-          resource, // apiUrl + '/' + resource,
+          resource,
           { 
             ...requestOptions,
             method: requestMethod,
@@ -124,11 +123,9 @@ export const dataProvider = (
           }
         )
         .json();
-
-        // console.log('response: ', response)
         
-        if(response){ // ?.success
-          return response; // .data
+        if(response){
+          return response;
         }
         
         throw new CustomError('ReadError', response?.message || i18n.t('error.unspecific'), response.data);
@@ -142,12 +139,11 @@ export const dataProvider = (
     }
   },
 
-  // { resource, variables, meta } | body, json
   create: async ({ resource, variables, meta }) => {
     const token = getToken();
     if(token){
       const { method, headers, body, ...requestOptions } = meta ?? {}; // , queryContext
-      const requestMethod = (method as MethodCommons) ?? "post"; // MethodTypesWithBody | MethodCommons
+      const requestMethod = (method as MethodCommons) ?? "post";
 
       try {
         const req: any = await httpClient(
@@ -163,20 +159,8 @@ export const dataProvider = (
             },
           }
         ).json();
-
-        // console.log('req: ', req)
-
-        // console.log('queryContext: ', queryContext)
-        /** @DEV : signal not work if method get */
-        // const { data } = await httpClient({
-        //   ...requestOptions,
-        //   method: requestMethod,
-        //   url: apiUrl + '/' + resource,
-        //   data: variables,
-        //   signal: requestMethod === 'get' ? queryContext?.signal : requestOptions.signal,
-        // });
   
-        if(req){ // ?.success
+        if(req){
           return req;
         }
         
@@ -199,7 +183,7 @@ export const dataProvider = (
   
       try {
         const req: any = await httpClient(
-          resource + (id ? '/' + id : ''), // `${apiUrl}/${resource}${id ? '/' + id : ''}`,
+          resource + (id ? '/' + id : ''),
           {
             method: requestMethod,
             json: variables,
@@ -208,14 +192,9 @@ export const dataProvider = (
               Authorization: 'Bearer ' + token,
             },
           }
-          /** @DEV : must check & test (use or not) */
-          // { signal: queryContext?.signal, ...requestOptions }
-          // { ...queryContext, ...requestOptions }
         ).json();
-
-        // console.log('req: ', req)
   
-        if(req){ // ?.success
+        if(req){
           return req;
         }
         
@@ -249,10 +228,8 @@ export const dataProvider = (
             },
           }
         ).json();
-
-        // console.log('req: ', req)
   
-        if(req){ // ?.success
+        if(req){
           return req;
         }
         
@@ -284,13 +261,9 @@ export const dataProvider = (
               Authorization: 'Bearer ' + token,
             },
           },
-          /** @DEV : must check & test (use or not) */
-          // { signal: queryContext?.signal }
         ).json();
-
-        // console.log('req: ', req)
   
-        if(req){ // ?.success
+        if(req){
           return req;      
         }
         
@@ -322,14 +295,9 @@ export const dataProvider = (
               Authorization: 'Bearer ' + token,
             },
           }, // , variables
-
-          /** @DEV : must check & test (use or not) */
-          // { signal: queryContext?.signal }
         ).json();
-
-        // console.log('req: ', req)
   
-        if(req){ // ?.success
+        if(req){
           return req;      
         }
         
@@ -353,7 +321,6 @@ export const dataProvider = (
     sorters,
     payload, 
     query,
-    // headers,
     meta: { queryContext, signal: abortSignal, searchParams, headers, ...requestOptions } = {},
   }) => {
     const token = getToken();
@@ -387,8 +354,6 @@ export const dataProvider = (
           case "delete":
             httpResponse = await httpClient.delete(url, {
               ...commonOptions,
-              // data: payload,
-              // body,
               json: payload,
             })
             .json();
@@ -419,7 +384,7 @@ export const dataProvider = (
             break;
         }
   
-        if(httpResponse){ // ?.success
+        if(httpResponse){
           return Promise.resolve(httpResponse); 
         }
         

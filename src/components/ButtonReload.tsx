@@ -1,4 +1,3 @@
-// import { useTranslate } from "@refinedev/core";
 import { Button } from "antd";
 import { ReloadOutlined } from "@ant-design/icons";
 
@@ -9,8 +8,6 @@ export const ButtonReload = ({
   title,
   ...etc
 }: any) => {
-  // const translate = useTranslate();
-
   return (
     <Button 
       {...etc}
