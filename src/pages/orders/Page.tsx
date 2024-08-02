@@ -4,7 +4,7 @@ import { useDocumentTitle } from "@refinedev/react-router-v6";
 import { HttpError, useParsed, useTranslate, useDelete, useNavigation, useGetIdentity } from "@refinedev/core";
 import { useTable, getDefaultSortOrder } from "@refinedev/antd";
 import { Button, Modal } from 'antd';
-import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { FaRegUser } from "react-icons/fa";
 import { Table } from '@/components/table/Table';
 import { Header } from '@/components/table/Header';
@@ -187,23 +187,11 @@ export default function Page(){
     <Header
       title={title}
       content={
-        <>
-          <ButtonReload
-            disabled={isLoadingDelete}
-            loading={!isLoading && isRefetching}
-            onClick={() => refetch()}
-          />
-
-          {isAdmin && (
-            <Button
-              type="primary"
-              icon={<PlusOutlined />}
-              onClick={() => push('/orders/create')}
-            >
-              {translate('buttons.create')}
-            </Button>
-          )}
-        </>
+        <ButtonReload
+          disabled={isLoadingDelete}
+          loading={!isLoading && isRefetching}
+          onClick={() => refetch()}
+        />
       }
       onSearch={(val: any) => {
         current > 1 && setCurrent(1);

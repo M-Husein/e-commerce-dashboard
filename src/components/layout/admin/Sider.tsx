@@ -1,6 +1,6 @@
 import { useState, useCallback, useDeferredValue } from "react";
 import { Layout, Menu, Grid, Drawer, Button, Input } from "antd";
-import { FaHouse, FaList, FaBars, FaCircleInfo } from "react-icons/fa6";
+import { FaHouse, FaList, FaBars, FaCircleInfo, FaChevronLeft } from "react-icons/fa6";
 import {
   useTitle,
   CanAccess,
@@ -250,7 +250,7 @@ export const Sider = ({
         >
           <Layout>
             <Layout.Sider
-              theme="light"
+              theme={colorScheme}
               width={275}
               style={{
                 height: '100vh',
@@ -293,7 +293,7 @@ export const Sider = ({
       />
 
       <Layout.Sider
-        theme="light"
+        theme={colorScheme}
         className="!fixed top-0 z-1051 h-screen siderMain" // bg-nav
         id="asideMain"
         collapsible
@@ -304,6 +304,18 @@ export const Sider = ({
         width={width}
         collapsedWidth={collapsedWidth}
         breakpoint="lg"
+        trigger={
+          <Button
+            type="text"
+            style={{
+              width: '100%',
+              height: '100%',
+              borderRadius: 0,
+            }}
+          >
+            <FaChevronLeft className={siderCollapsed ? "rotate-180" : ""} />
+          </Button>
+        }
       >
         <div
           style={{ width: widthSider }}
