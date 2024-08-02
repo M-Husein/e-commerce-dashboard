@@ -2,6 +2,8 @@
 
 E-commerce dashboard for administrators to manage products, orders, and users.
 
+## Dependencies or library
+
 1. [React](https://react.dev/)
 2. [Vite](https://vitejs.dev/)
 3. [Ant Design](https://ant.design/components/overview/)
@@ -9,6 +11,10 @@ E-commerce dashboard for administrators to manage products, orders, and users.
 5. [React Router](https://reactrouter.com/)
 6. [React Hook Form](https://react-hook-form.com/get-started)
 7. [tailwindcss](https://tailwindcss.com/)
+
+## Rest API
+
+[dummyjson.com](https://dummyjson.com)
 
 <br />
 
