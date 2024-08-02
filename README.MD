@@ -1,4 +1,4 @@
-# E-commerce Dashboard
+# E-Commerce Dashboard
 
 E-commerce dashboard for administrators to manage products, orders, and users.
 
@@ -19,6 +19,14 @@ This [Refine](https://github.com/refinedev/refine) project was generated with [c
 A React Framework for building internal tools, admin panels, dashboards & B2B apps with unmatched flexibility ✨
 
 Refine's hooks and components simplifies the development process and eliminates the repetitive tasks by providing industry-standard solutions for crucial aspects of a project, including authentication, access control, routing, networking, state management, and i18n.
+
+## Set up and run the project locally
+
+1. Clone or download this repository.
+2. Open cmd or terminal an run this script:
+```bash
+    npm install
+```
 
 ## Available Scripts
 
