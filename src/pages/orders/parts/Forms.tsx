@@ -1,8 +1,8 @@
 
-import { useTranslate, useUpdate } from "@refinedev/core"; // useNavigation
-import { Row, Col, Button, Input, Card, Modal } from 'antd';
+import { useTranslate, useUpdate } from "@refinedev/core";
+import { Row, Col, Button, Input, Card, Modal, Alert } from 'antd';
 import { Link } from "react-router-dom";
-// import dayjs from 'dayjs';
+import { FaRegUser } from "react-icons/fa";
 import type { IOrder } from '@/types/Types';
 
 export function Forms({
@@ -50,79 +50,94 @@ export function Forms({
   return (
     <fieldset
       disabled={disabled}
-      className="space-y-6"
     >
-      <Row gutter={[16, 4]}>
-        <Col md={5} xs={24}>
-          Total
-        </Col>
-        <Col md={19} xs={24}>
-          <Input
-            readOnly
-            value={values.total}
-          />
-        </Col>
-      </Row>
+      <Col lg={13} xs={24}>
+        <Alert 
+          type="info"
+          message={
+            <div className="p-2 space-y-6">
+              <Row gutter={[16, 4]}>
+                <Col md={6} xs={24}>
+                  Total
+                </Col>
+                <Col md={18} xs={24}>
+                  <Input
+                    readOnly
+                    value={values.total}
+                  />
+                </Col>
+              </Row>
 
-      <Row gutter={[16, 4]}>
-        <Col md={5} xs={24}>
-          Total Products
-        </Col>
-        <Col md={19} xs={24}>
-          <Input
-            readOnly
-            value={values.totalProducts}
-          />
-        </Col>
-      </Row>
+              <Row gutter={[16, 4]}>
+                <Col md={6} xs={24}>
+                  Total Products
+                </Col>
+                <Col md={18} xs={24}>
+                  <Input
+                    readOnly
+                    value={values.totalProducts}
+                  />
+                </Col>
+              </Row>
 
-      <Row gutter={[16, 4]}>
-        <Col md={5} xs={24}>
-          Discounted Total
-        </Col>
-        <Col md={19} xs={24}>
-          <Input
-            readOnly
-            value={values.discountedTotal}
-          />
-        </Col>
-      </Row>
+              <Row gutter={[16, 4]}>
+                <Col md={6} xs={24}>
+                  Discounted Total
+                </Col>
+                <Col md={18} xs={24}>
+                  <Input
+                    readOnly
+                    value={values.discountedTotal}
+                  />
+                </Col>
+              </Row>
 
-      <Row gutter={[16, 4]}>
-        <Col md={5} xs={24}>
-          Total Qty
-        </Col>
-        <Col md={19} xs={24}>
-          <Input
-            readOnly
-            value={values.totalQuantity}
-          />
-        </Col>
-      </Row>
+              <Row gutter={[16, 4]}>
+                <Col md={6} xs={24}>
+                  Total Qty
+                </Col>
+                <Col md={18} xs={24}>
+                  <Input
+                    readOnly
+                    value={values.totalQuantity}
+                  />
+                </Col>
+              </Row>
 
-      <Row gutter={[16, 4]}>
-        <Col md={5} xs={24}>
-          User
-        </Col>
-        <Col md={19} xs={24}>
-          <Input
-            readOnly
-            value={values.userId}
-          />
-        </Col>
-      </Row>
+              <Row gutter={[16, 4]}>
+                <Col md={6} xs={24}>
+                  User
+                </Col>
+                <Col md={18} xs={24}>
+                  <Link 
+                    to={"/users/" + values.userId} 
+                    className="font-medium"
+                  >
+                    <FaRegUser /> Show
+                  </Link>
+                </Col>
+              </Row>
+            </div>
+          }
+        />
+      </Col>
+      
+      {/* {Array.isArray(values?.products) && (
+        
+      )} */}
 
-      {Array.isArray(values?.products) && (
-        <div>
-          <p className="mb-2">Products</p>
+      <div className="my-4">
+        <h2 className="mb-2 text-lg">Products</h2>
 
-          <Row gutter={[16, 16]}>
-            {values.products.map((item: IOrder['products']) =>
-              <Col key={item.id} lg={6} md={8} xs={24}>
-                <Card
-                  size="small"
-                  className="shadow"
-                  cover={
+        <Row gutter={[16, 16]}>
+          {(disabled ? [1, 2, 3] : values.products || []).map((item: IOrder['products'], index: number) =>
+            <Col key={item.id || index} lg={4} md={6} xs={24}>
+              <Card
+                size="small"
+                loading={disabled}
+                className="shadow h-full"
+                cover={
+                  !disabled && (
                     <Link 
                       to={"/products/" + item.id} 
                       className="overflow-hidden"
@@ -133,21 +148,25 @@ export function Forms({
                         className="block w-full"
                         alt={item.title} 
                         src={item.thumbnail}
+                        style={{ minHeight: 95 }}
                       />
                     </Link>
-                  }
-                >
+                  )
+                }
+              >
+                {!disabled && (
                   <Card.Meta 
                     title={
                       <Link 
                         to={"/products/" + item.id} 
                         className="text-gray-700"
+                        title={item.title}
                       >
                         {item.title}
                       </Link>
                     }
                     description={
-                      <table>
+                      <table className="text-sm">
                         <tbody>
                           {[
                             { label: "Price", value: item.price },
@@ -165,22 +184,24 @@ export function Forms({
                       </table>
                     }
                   />
-                </Card>
-              </Col>
-            )}
-          </Row>
-        </div>
-      )}
+                )}
+                
+              </Card>
+            </Col>
+          )}
+        </Row>
+      </div>
 
-      <div className="text-center space-x-2">
+      <div className="text-center space-x-2 mt-6">
         {buttons}
 
         <Button
           type="primary"
           loading={isLoading}
+          disabled={disabled}
           onClick={updateOrder}
         >
-          {translate('buttons.save')}
+          Update
         </Button>
       </div>
 

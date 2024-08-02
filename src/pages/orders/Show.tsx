@@ -1,7 +1,7 @@
 import type { IOrder } from '@/types/Types';
 import { useDocumentTitle } from "@refinedev/react-router-v6";
 import { HttpError, useParsed, useOne } from "@refinedev/core";
-import { Breadcrumb, Card } from 'antd';
+import { Breadcrumb } from 'antd'; // Card
 import { Link } from "react-router-dom";
 import { ButtonReload } from '@/components/ButtonReload';
 import { Forms } from './parts/Forms';
@@ -37,18 +37,16 @@ export default function Show(){
         className="mb-2"
       />
 
-      <Card>
-        <Forms
-          values={data || {}}
-          disabled={loadingDetails}
-          buttons={
-            <ButtonReload
-              loading={!isLoading && isRefetching}
-              onClick={() => refetch()}
-            />
-          }
-        />
-      </Card>
+      <Forms
+        values={data || {}}
+        disabled={loadingDetails}
+        buttons={
+          <ButtonReload
+            loading={!isLoading && isRefetching}
+            onClick={() => refetch()}
+          />
+        }
+      />
     </>
   );
 }

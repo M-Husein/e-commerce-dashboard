@@ -1,9 +1,8 @@
 import type { IProduct } from '@/types/Types';
 import { useDocumentTitle } from "@refinedev/react-router-v6";
 import { HttpError, useParsed, useOne } from "@refinedev/core";
-import { Breadcrumb, Card, Avatar, Modal } from 'antd';
+import { Breadcrumb, Card, Image } from 'antd';
 import { Link } from "react-router-dom";
-import { FaImage } from "react-icons/fa";
 import { ButtonReload } from '@/components/ButtonReload';
 import { Forms } from './parts/Forms';
 
@@ -45,18 +44,17 @@ export default function Show(){
           body: "flex flex-wrap"
         }}
       >
-        <Card.Meta
-          className="flex-none self-start !sticky md_top-16 z-1"
-          avatar={
-            <Avatar
-              alt={titleData}
-              size={150}
-              icon={<FaImage />}
-              shape="square"
+        <div className="flex-none self-start !sticky md_top-16 z-1">
+          <Image.PreviewGroup
+            items={images}
+          >
+            <Image
+              width={150}
               src={thumbnail}
+              alt={titleData}
             />
-          }
-        />
+          </Image.PreviewGroup>
+        </div>
 
         <Forms
           values={data}

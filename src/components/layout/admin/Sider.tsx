@@ -2,14 +2,12 @@ import { useState, useCallback, useDeferredValue } from "react";
 import { Layout, Menu, Grid, Drawer, Button, Input } from "antd";
 import { FaHouse, FaList, FaBars, FaCircleInfo } from "react-icons/fa6";
 import {
-  // useTranslate,
   useTitle,
   CanAccess,
   ITreeMenu,
   useMenu,
   useRefineContext,
   pickNotDeprecated,
-  // useWarnAboutChange,
 } from "@refinedev/core";
 import { useThemedLayoutContext } from "@/utils/hooks/useThemedLayoutContext";
 import { useLocation, Link } from 'react-router-dom';
@@ -29,9 +27,7 @@ export const Sider = ({
   // activeItemDisabled = false,
 }: any) => {
   const { siderCollapsed, setSiderCollapsed, mobileSiderOpen, setMobileSiderOpen } = useThemedLayoutContext();
-  // const { warnWhen, setWarnWhen } = useWarnAboutChange();
   const TitleFromContext = useTitle();
-  // const translate = useTranslate();
   const { menuItems, selectedKey, defaultOpenKeys } = useMenu({ meta });
   const { hasDashboard } = useRefineContext();
   const location = useLocation();
@@ -175,7 +171,6 @@ export const Sider = ({
 
   const dashboard = hasDashboard ? (
     <Menu.Item key="dashboard" icon={<FaHouse />}>
-      {/* <Link to="/">{translate("dashboard.title")}</Link> */}
       <Link to="/">Dashboard</Link>
       {!siderCollapsed && selectedKey === "/" && <div className="a-menu-tree-arrow" />}
     </Menu.Item>
@@ -203,65 +198,41 @@ export const Sider = ({
 
   const renderMenu = () => {
     return (
-      <Menu
-        theme={colorScheme}
-        mode="inline"
-        inlineIndent={9}
-        className="pb-2 q-scroll scroll-hover border-0 overflow-auto overscroll-contain flex-1 sider-menu"
-        // selectable={false}
-        selectedKeys={selectedKey ? [selectedKey] : []}
-        defaultOpenKeys={defaultOpenKeys}
-        onClick={(obj: any) => {
-          isMobile && !obj.key.startsWith("_x") && setMobileSiderOpen(false)
-        }}
-      >
-        <Menu.Item
-          key="_x"
-          title=""
-          className="after-no !sticky top-0 z-1 shadow bg-main sider-search"
-          style={{ 
-            paddingLeft: 0, 
-            marginBlockStart: 0, 
-            height: 'auto', 
-            lineHeight: 'normal',
-            width: 'auto',
-            borderRadius: 0,
-            // paddingBottom: 5,
-            // marginBottom: 7,
-            // cursor: 'auto',
-          }}
-          role="search"
-        >
-          <Input.Search
-            allowClear
-            // variant="borderless" // filled | borderless
-            // size="large"
-            id="siderSearch"
-            placeholder="Search"
-            value={searchValue}
-            onChange={onFilterMenu}
-            onSearch={onSearch}
-          />
-        </Menu.Item>
-
-        {renderSider()}
+      <>
+        <Input.Search
+          allowClear
+          id="siderSearch"
+          placeholder="Search"
+          className="relative shadow overflow-hidden sider-search"
+          value={searchValue}
+          onChange={onFilterMenu}
+          onSearch={onSearch}
+        />
 
         {!searchOn && searchValueTrim && !items.length && (
-          <Menu.Item
-            key="_x2"
-            danger
-            title=""
-            icon={<FaCircleInfo />}
-            className="text-center font-bold pe-none"
-            style={{ display: 'block' }}
-          >
-            Not Found
-          </Menu.Item>
+          <b className="text-center p-4" title="Not Found">
+            <FaCircleInfo />
+            {siderCollapsed ? "" : " Not Found"}
+          </b>
         )}
-      </Menu>
+        
+        <Menu
+          theme={colorScheme}
+          mode="inline"
+          inlineIndent={9}
+          className="py-2 q-scroll scroll-hover border-0 overflow-auto overscroll-contain flex-1 sider-menu"
+          selectedKeys={selectedKey ? [selectedKey] : []}
+          defaultOpenKeys={defaultOpenKeys}
+          onClick={() => {
+            isMobile && setMobileSiderOpen(false)
+          }}
+        >
+          {renderSider()}
+        </Menu>
+      </>
     );
   };
-
+  
   const renderDrawerSider = () => {
     return (
       <>
@@ -323,7 +294,7 @@ export const Sider = ({
 
       <Layout.Sider
         theme="light"
-        className="!fixed top-0 z-1051 h-screen siderMain" //  bg-nav
+        className="!fixed top-0 z-1051 h-screen siderMain" // bg-nav
         id="asideMain"
         collapsible
         collapsed={siderCollapsed}
@@ -336,7 +307,6 @@ export const Sider = ({
       >
         <div
           style={{ width: widthSider }}
-          // bg-nav | bg-blue-100
           className={(siderCollapsed ? "!p-0 justify-center" : "p-4") + " bg-nav flex items-center h-12 shadow relative z-2"}
         >
           <RenderToTitle collapsed={siderCollapsed} />

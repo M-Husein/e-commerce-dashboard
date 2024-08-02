@@ -1,7 +1,7 @@
 import type { RefineThemedLayoutV2HeaderProps } from "@refinedev/antd";
 import type { IUser } from '@/types/Types';
 import { useEffect } from "react";
-import { useGetIdentity, useLogout, useWarnAboutChange, useTranslate } from "@refinedev/core"; // , useGetLocale, useSetLocale
+import { useGetIdentity, useLogout, useWarnAboutChange, useTranslate } from "@refinedev/core";
 import {
   Avatar,
   Layout as AntdLayout,

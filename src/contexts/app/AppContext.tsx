@@ -92,6 +92,9 @@ export const AppContextProvider: React.FC<PropsWithChildren> = ({
             // colorText: "",
             // colorLink: "#ff7a00",
             colorPrimary: "#0d6efd",
+            borderRadius: 8, // 6
+            borderRadiusLG: 10, // 8
+            borderRadiusSM: 6, // 4
             zIndexPopupBase: 1055, // For Modal
           },
           components: {

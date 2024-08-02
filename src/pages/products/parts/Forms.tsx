@@ -58,7 +58,7 @@ export function Forms({
   return (
     <Form
       disabled={disabledOrLoading}
-      className="grow w-full lg_w-[calc(100%-185px)] lg_px-4"
+      className="grow w-full lg_w-[calc(100%-185px)] lg_px-4 lg_ml-4"
       fieldsetClass="space-y-6"
       onSubmit={isAdmin ? handleSubmit(onFinish) : undefined}
     >
@@ -341,7 +341,7 @@ export function Forms({
                 {...field}
                 id="desc"
                 disabled={disabledOrLoading}
-                autoSize
+                autoSize={{ minRows: 3 }}
                 readOnly={!isAdmin}
               />
             )}
