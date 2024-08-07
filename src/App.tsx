@@ -4,7 +4,6 @@ import routerBindings, { DocumentTitleHandler } from "@refinedev/react-router-v6
 import { BrowserRouter } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { dataProvider } from "@/providers/dataProvider";
-// import { authProvider } from "@/authProvider";
 import { authProvider } from "@/providers/authProvider";
 import { AppContextProvider, AppLocale } from "@/contexts/app/AppContext";
 import { useNotificationProvider } from "@/providers/notificationProvider";

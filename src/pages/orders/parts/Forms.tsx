@@ -121,10 +121,6 @@ export function Forms({
           }
         />
       </Col>
-      
-      {/* {Array.isArray(values?.products) && (
-        
-      )} */}
 
       <div className="my-4">
         <h2 className="mb-2 text-lg">Products</h2>

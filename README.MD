@@ -17,6 +17,32 @@ E-commerce dashboard for administrators to manage products, orders, and users.
 
 Rest API from [dummyjson.com](https://dummyjson.com).
 
+### Available user:
+
+Role: admin
+```json
+{
+  "username": "emilys",
+  "password": "emilyspass"
+}
+```
+
+Role: moderator
+```json
+{
+  "username": "oliviaw",
+  "password": "oliviawpass"
+}
+```
+
+Role: user
+```json
+{
+  "username": "averyp",
+  "password": "averyppass"
+}
+```
+
 ### Note:
 
 - Adding a new data will not add it into the server. It will simulate a POST request and will return the new created data with a new id

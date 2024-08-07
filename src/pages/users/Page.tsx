@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { TableColumnsType } from 'antd';
 import { useDocumentTitle } from "@refinedev/react-router-v6";
-import { HttpError, useParsed, useTranslate, useDelete, useNavigation, useGetIdentity } from "@refinedev/core"; // useNotification
+import { HttpError, useParsed, useTranslate, useDelete, useNavigation, useGetIdentity } from "@refinedev/core";
 import { useTable } from "@refinedev/antd";
 import { Button, Modal } from 'antd';
 import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';

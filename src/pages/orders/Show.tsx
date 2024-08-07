@@ -18,7 +18,6 @@ export default function Show(){
     isLoading,
     isFetching,
     isRefetching,
-    // isError,
     refetch,
   } = useOne<IOrder, HttpError>({
     resource: "carts",

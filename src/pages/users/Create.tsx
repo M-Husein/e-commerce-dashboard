@@ -1,5 +1,4 @@
 import { useDocumentTitle } from "@refinedev/react-router-v6";
-// import { HttpError, useParsed, useTranslate, useOne } from "@refinedev/core";
 import { Breadcrumb, Card, Avatar } from 'antd';
 import { Link } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
@@ -32,7 +31,6 @@ export default function Create(){
               alt="PP"
               size={150}
               icon={<FaRegUser />}
-              // src={avatar || image}
             />
           }
         />

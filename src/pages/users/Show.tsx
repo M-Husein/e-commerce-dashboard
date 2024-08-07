@@ -19,7 +19,6 @@ export default function Show(){
     isLoading,
     isFetching,
     isRefetching,
-    // isError,
     refetch,
   } = useOne<IUser, HttpError>({
     resource: "users",

@@ -118,7 +118,6 @@ export default function Page(){
             className="max-w-full rounded object-contain" 
             width={55}
             height={55}
-            // src={"https://dummyjson.com/image/55?text=" + row.title}
             src={txt}
             alt={row.title}
           />
